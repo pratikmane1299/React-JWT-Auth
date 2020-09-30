@@ -34,6 +34,19 @@ app.use((req, res, next) => {
 });
 
 app.use((err, req, res, next) => {
+  if (err.name === 'ValidationError') {
+    err.status = 400;
+
+    let errors = {};
+    err.inner.forEach(e => {
+      errors = {
+        ...errors,
+        [e.path]: e.message
+      }
+    });
+
+    err.validationErrors = errors;
+  }
   err.status ?  res.status(err.status) : res.status(500);
 
   res.json({

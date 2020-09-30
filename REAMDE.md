@@ -10,11 +10,11 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Create Express Server.
 * [X] - Add Auth Routes.
 * [X] - Create User model.
-* [ ] - SignUp User @POST /api/signup
-  * [ ] - Validate request body.
-  * [ ] - Check if user already exist.
-  * [ ] - Hash password
-  * [ ] - Save User in database.
+* [X] - SignUp User @POST /api/signup
+  * [X] - Validate request body.
+  * [X] - Check if user already exist.
+  * [X] - Hash password
+  * [X] - Save User in database.
 * [ ] - login User @POST /api/login
   * [ ] - Validate request body.
   * [ ] - Check if user already exist.
