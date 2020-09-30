@@ -9,7 +9,7 @@ Authentication and Authorization in jsonwebtokens.
   * [X] - Express, morgan, cors, nodemon, jsonwebtokens, bcryptjs, yup, mongoose.
 * [X] - Create Express Server.
 * [X] - Add Auth Routes.
-* [ ] - Create User model.
+* [X] - Create User model.
 * [ ] - SignUp User @POST /api/signup
   * [ ] - Validate request body.
   * [ ] - Check if user already exist.
