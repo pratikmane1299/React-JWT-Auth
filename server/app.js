@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 
 require('dotenv').config();
 
+const authRouter = require('./routes/auth');
+
 const app = express();
 const PORT = process.env.PORT || 1234;
 
@@ -22,6 +24,8 @@ app.get('/', (req, res) => {
     message: 'Hello World'
   });
 });
+
+app.use('/api/auth/', authRouter);
 
 app.use((req, res, next) => {
   res.status(404);
