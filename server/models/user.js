@@ -29,4 +29,8 @@ userSchema.methods.hashPassword = async function () {
   return bcrypt.hash(this.password, saltRounds);
 }
 
+userSchema.methods.comparePasswords = async function(password) {
+  return bcrypt.compare(password, this.password);
+}
+
 module.exports = mongoose.model('User', userSchema);

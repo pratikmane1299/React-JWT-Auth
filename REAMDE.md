@@ -15,11 +15,11 @@ Authentication and Authorization in jsonwebtokens.
   * [X] - Check if user already exist.
   * [X] - Hash password
   * [X] - Save User in database.
-* [ ] - login User @POST /api/login
-  * [ ] - Validate request body.
-  * [ ] - Check if user already exist.
-  * [ ] - Hash  & check if password match.
-  * [ ] - Send jsonwebtoken.
+* [X] - login User @POST /api/login
+  * [X] - Validate request body.
+  * [X] - Check if user already exist.
+  * [X] - Hash  & check if password match.
+  * [X] - Send jsonwebtoken.
 * [ ] - Create Auth Middleware.
 * [ ] - Add a private route.
 * [ ] - Apply auth middleware against private route.
