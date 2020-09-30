@@ -20,9 +20,9 @@ Authentication and Authorization in jsonwebtokens.
   * [X] - Check if user already exist.
   * [X] - Hash  & check if password match.
   * [X] - Send jsonwebtoken.
-* [ ] - Create Auth Middleware.
-* [ ] - Add a private route.
-* [ ] - Apply auth middleware against private route.
+* [X] - Create Auth Middleware.
+* [X] - Add a private route.
+* [X] - Apply auth middleware against private route.
 
 Client
 

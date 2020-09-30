@@ -5,6 +5,9 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 
 const authRouter = require('./routes/auth');
+const dashboardRouter = require('./routes/dashboard');
+
+const isLoggedIn = require('./middlewares/auth');
 
 const app = express();
 const PORT = process.env.PORT || 1234;
@@ -26,6 +29,7 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/auth/', authRouter);
+app.use('/api/dashboard/', isLoggedIn, dashboardRouter);
 
 app.use((req, res, next) => {
   res.status(404);
