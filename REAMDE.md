@@ -4,10 +4,10 @@ Authentication and Authorization in jsonwebtokens.
 
 ## Server
 
-* [ ] - Initialize Node Project.
-* [ ] - Install Dependencies.
-  * [ ] - Express, morgan, cors, nodemon, jsonwebtokens, bcryptjs, yup, mongoose.
-* [ ] - Create Express Server.
+* [X] - Initialize Node Project.
+* [X] - Install Dependencies.
+  * [X] - Express, morgan, cors, nodemon, jsonwebtokens, bcryptjs, yup, mongoose.
+* [X] - Create Express Server.
 * [ ] - Add Auth Routes.
 * [ ] - Create User model.
 * [ ] - SignUp User @POST /api/signup
