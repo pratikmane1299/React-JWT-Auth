@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { signUp } from '../services/API';
 
@@ -188,6 +189,9 @@ export default class Signup extends React.Component {
               </div>
               <button className="btn btn-primary btn-lg btn-block">SignUp</button>
             </form>
+            <div className="mt-3 text-center">
+              <Link to="/login">Have a account ? Login</Link>
+            </div>
           </div>
         </div>
       </div>

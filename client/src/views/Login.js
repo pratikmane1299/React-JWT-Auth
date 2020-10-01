@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 import { login } from '../services/API';
 import AuthContext from '../contexts/auth';
@@ -126,6 +127,9 @@ export default class Login extends React.Component {
               </div>
               <button className="btn btn-primary btn-lg btn-block">Login</button>
             </form>
+            <div className="mt-3 text-center">
+              <Link to="/signup">Don't have a account ? Create One</Link>
+            </div>
           </div>
         </div>
       </div>
