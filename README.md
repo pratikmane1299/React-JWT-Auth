@@ -40,11 +40,11 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Make POST request to @/api/login
   * [X] - If errors show errors to user.
   * [X] - Else save token navigate dashboard page.
-* [ ] - Create User context.
-  * [ ] - Wrap app with context provider.
-  * [ ] - Add user state and methods to store and remove jwt token, to context.
-* [ ] - Create private route component.
-* [ ] - Make dashboard a private route.
+* [X] - Create User context.
+  * [X] - Wrap app with context provider.
+  * [X] - Add user state and methods to store and remove jwt token, to context.
+* [X] - Create private route component.
+* [X] - Make dashboard a private route.
 * [ ] - Get token from context and show user details in dashboard.
 * [ ] - Add logout.
   * [ ] - Remove token from localstorage.

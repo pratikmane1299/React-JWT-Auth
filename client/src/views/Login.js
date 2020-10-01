@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { login } from '../services/API';
+import AuthContext from '../contexts/auth';
 
 const initialState = {
   email: '',
@@ -10,6 +11,7 @@ const initialState = {
 
 export default class Login extends React.Component {
   state = initialState;
+  static contextType = AuthContext;
 
   handleChange = (e) => {
     const { name, value } = e.target;
@@ -30,9 +32,9 @@ export default class Login extends React.Component {
 
       try {
         const response = await login({ email: this.state.email, password: this.state.password });
+        this.context.setAuthToken(response.data.token);
         this.props.history.push('/');
       } catch(error) {
-        console.log(error.response);
 
         if (error.response) {
           switch (error.response.status) {
@@ -49,6 +51,7 @@ export default class Login extends React.Component {
                   password: error.response.data.message
                 }
               })
+              break;
           
             default:
               break;

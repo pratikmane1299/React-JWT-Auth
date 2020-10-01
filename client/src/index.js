@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter as Router } from 'react-router-dom';
 import '../node_modules/bootswatch/dist/lumen/bootstrap.css'
 import './index.css';
 import App from './App';
+import { AuthProvider } from './contexts/auth';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
+    <AuthProvider>
       <App />
-    </Router>
+    </AuthProvider>
   </React.StrictMode>,
   document.getElementById('root')
 );
