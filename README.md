@@ -46,5 +46,5 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Create private route component.
 * [X] - Make dashboard a private route.
 * [X] - Get token from context and show user details in dashboard.
-* [ ] - Add logout.
-  * [ ] - Remove token from localstorage.
+* [X] - Add logout.
+  * [X] - Remove token from localstorage.
