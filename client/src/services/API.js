@@ -9,3 +9,11 @@ export function signUp(input) {
 export function login(input) {
   return axios.post(`${API_URL}/auth/login`, input);
 }
+
+export function fetchLoggedInUserProfile(token) {
+  return axios.get(`${API_URL}/dashboard/profile`, {
+    headers: {
+      authorization: `Bearer ${token}`
+    }
+  });
+}
