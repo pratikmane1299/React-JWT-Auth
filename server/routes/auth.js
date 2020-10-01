@@ -57,7 +57,7 @@ router.post('/signup', async (req, res, next) => {
     const user = await User.findOne({ email: body.email })
 
     if (user) {
-      return res.status(400).json({message: 'Sorry, Email is already taken'});
+      return res.status(409).json({message: 'Sorry, Email is already taken'});
     }
 
     await User.create(validatedBody);
