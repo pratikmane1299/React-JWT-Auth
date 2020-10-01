@@ -24,12 +24,12 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Add a private route.
 * [X] - Apply auth middleware against private route.
 
-Client
+## Client
 
-* [ ] - Create a react app.
-* [ ] - Install Dependencies.
-  * [ ] - react-router-dom, bootstrap, yup.
-* [ ] - Add login/signUp, protected Routes.
+* [X] - Create a react app.
+* [X] - Install Dependencies.
+  * [X] - react-router-dom, bootstrap, yup.
+* [X] - Add login/signUp, protected Routes.
 * [ ] - Create signup form.
 * [ ] - Add validation to signup form.
 * [ ] - Make POST request to @/api/signup
