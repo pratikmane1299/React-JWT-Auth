@@ -4,6 +4,7 @@ import './App.css';
 
 import Header from './components/Header';
 import Signup from './views/Signup';
+import Login from './views/Login';
 
 function App() {
   return (
@@ -15,9 +16,7 @@ function App() {
             <h3>Dashboard</h3>
           </Route>
           <Route path="/signup" component={Signup} />
-          <Route path="/login">
-            <h3>Login</h3>
-          </Route>
+          <Route path="/login" component={Login} />
         </Switch>
       </main>
     </div>
