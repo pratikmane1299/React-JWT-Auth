@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { signUp } from '../services/API';
+
 const initialState = {
   firstName: '',
   lastName: '',
@@ -23,14 +25,43 @@ export default class Signup extends React.Component {
     });
   }
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
 
     const errors = this.validate();
     if (Object.keys(errors).length === 0) {
-      console.log('form valid')
 
-      this.setState(initialState);
+      try {
+        const response = await signUp({
+          firstName: this.state.firstName,
+          lastName: this.state.lastName,
+          email: this.state.email,
+          password: this.state.password,
+          confirmPassword: this.state.confirmPassword
+        });
+
+        this.props.history.push('/login');
+      } catch (error) {
+        if (error.response) {
+          switch (error.response.status) {
+            case 400:
+              this.setState({
+                errors: error.response.data.error.validationErrors
+              });
+              break;
+            case 409:
+              this.setState({
+                errors: {
+                  email: error.response.data.message
+                }
+              });
+              break;
+          
+            default:
+              break;
+          }
+        }
+      }
 
     } else {
       this.setState({
@@ -49,7 +80,7 @@ export default class Signup extends React.Component {
     if (!/\S+@\S+\.\S+/i.test(email)) errors.email = 'Invalid Email';
     if (email.trim() === '') errors.email = 'Email is required';
     if (password.trim() === '') errors.password = 'Password is required';
-    if (confirmPassword.trim() !== password.trim()) errors.confirmPassword = 'Passwords dont match';
+    // if (confirmPassword.trim() !== password.trim()) errors.confirmPassword = 'Passwords dont match';
     if (confirmPassword.trim() === '') errors.confirmPassword = 'Confirm Password is required';
 
     return errors;

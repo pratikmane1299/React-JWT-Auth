@@ -32,9 +32,9 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Add login/signUp, protected Routes.
 * [X] - Create signup form.
 * [X] - Add validation to signup form.
-* [ ] - Make POST request to @/api/signup
-  * [ ] - If errors show errors on page.
-  * [ ] - Else save token navigate to login page.
+* [X] - Make POST request to @/api/signup
+  * [X] - If errors show errors on page.
+  * [X] - Else save token navigate to login page.
 * [ ] - Create login form.
 * [ ] - Add validation to login form.
 * [ ] - Make POST request to @/api/login
