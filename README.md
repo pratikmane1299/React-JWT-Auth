@@ -31,7 +31,7 @@ Authentication and Authorization in jsonwebtokens.
   * [X] - react-router-dom, bootstrap, yup.
 * [X] - Add login/signUp, protected Routes.
 * [X] - Create signup form.
-* [ ] - Add validation to signup form.
+* [X] - Add validation to signup form.
 * [ ] - Make POST request to @/api/signup
   * [ ] - If errors show errors on page.
   * [ ] - Else save token navigate to login page.
