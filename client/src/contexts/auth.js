@@ -12,12 +12,12 @@ const AuthProvider = ({ children }) => {
   }
 
   useEffect(() => {
-    const savedToken = window.localStorage.getItem(JWT_TOKEN);
+    const savedToken = JSON.parse(window.localStorage.getItem(JWT_TOKEN));
     setAuth({loading: false, token: savedToken})
   }, []);
 
   useEffect(() => {
-    window.localStorage.setItem(JWT_TOKEN, auth.token);
+    window.localStorage.setItem(JWT_TOKEN, JSON.stringify(auth.token));
   }, [auth.token]);
 
   return (
