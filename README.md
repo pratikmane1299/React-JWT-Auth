@@ -37,9 +37,9 @@ Authentication and Authorization in jsonwebtokens.
   * [X] - Else save token navigate to login page.
 * [X] - Create login form.
 * [X] - Add validation to login form.
-* [ ] - Make POST request to @/api/login
-  * [ ] - If errors show errors to user.
-  * [ ] - Else save token navigate dashboard page.
+* [X] - Make POST request to @/api/login
+  * [X] - If errors show errors to user.
+  * [X] - Else save token navigate dashboard page.
 * [ ] - Create User context.
   * [ ] - Wrap app with context provider.
   * [ ] - Add user state and methods to store and remove jwt token, to context.

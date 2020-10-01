@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { login } from '../services/API';
+
 const initialState = {
   email: '',
   password: '',
@@ -20,12 +22,40 @@ export default class Login extends React.Component {
     });
   }
 
-  onSubmit = (e) => {
+  onSubmit = async (e) => {
     e.preventDefault();
 
     const errors = this.validate();
     if (Object.keys(errors).length === 0) {
-      console.log('form valid');
+
+      try {
+        const response = await login({ email: this.state.email, password: this.state.password });
+        this.props.history.push('/');
+      } catch(error) {
+        console.log(error.response);
+
+        if (error.response) {
+          switch (error.response.status) {
+            case 404:
+              this.setState({
+                errors: {
+                  email: error.response.data.message
+                }
+              });
+              break;
+            case 401:
+              this.setState({
+                errors: {
+                  password: error.response.data.message
+                }
+              })
+          
+            default:
+              break;
+          }
+        }
+      }
+      
     } else {
       this.setState({
         errors
