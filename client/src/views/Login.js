@@ -1,13 +1,58 @@
 import React from 'react';
 
+const initialState = {
+  email: '',
+  password: '',
+  errors: {}
+};
+
 export default class Login extends React.Component {
+  state = initialState;
+
+  handleChange = (e) => {
+    const { name, value } = e.target;
+    this.setState({
+      [name]: value,
+      errors: {
+        ...this.state.errors,
+        [name]: ''
+      }
+    });
+  }
+
+  onSubmit = (e) => {
+    e.preventDefault();
+
+    const errors = this.validate();
+    if (Object.keys(errors).length === 0) {
+      console.log('form valid');
+    } else {
+      this.setState({
+        errors
+      });
+    }
+  }
+
+  validate() {
+    const { email, password } = this.state;
+
+    let errors = {};
+
+    if (!/\S+@\S+\.\S+/i.test(email)) errors.email = 'Invalid Email';
+    if (email.trim() === '') errors.email = 'Email is required';
+    if (password.trim() === '') errors.password = 'Password is required';
+
+    return errors;
+  }
+
   render() {
+    const { email, password, errors } = this.state;
     return (
       <div className="d-flex flex-column align-items-center">
         <h1>Login to your account</h1>
         <div className="card w-50 mx-auto mt-4">
           <div className="card-body">
-            <form>
+            <form onSubmit={this.onSubmit}>
               <div className="form-row">
                 <div className="col">
                   <div className="form-group">
@@ -15,8 +60,15 @@ export default class Login extends React.Component {
                     <input
                       name="email"
                       type="string"
-                      className="form-control"
+                      className={errors.email ? 'is-invalid form-control': 'form-control'}
+                      value={email}
+                      onChange={this.handleChange}
                     />
+                    {
+                      errors.email && (
+                        <span className="invalid-feedback">{errors.email}</span>
+                      )
+                    }
                   </div>
                 </div>
               </div>
@@ -26,9 +78,16 @@ export default class Login extends React.Component {
                     <label htmlFor="password">Password</label>
                     <input
                       name="password"
-                      type="string"
-                      className="form-control"
+                      type="password"
+                      className={errors.password ? 'is-invalid form-control': 'form-control'}
+                      value={password}
+                      onChange={this.handleChange}
                     />
+                    {
+                      errors.password && (
+                        <span className="invalid-feedback">{errors.password}</span>
+                      )
+                    }
                   </div>
                 </div>
               </div>

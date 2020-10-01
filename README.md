@@ -35,8 +35,8 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Make POST request to @/api/signup
   * [X] - If errors show errors on page.
   * [X] - Else save token navigate to login page.
-* [ ] - Create login form.
-* [ ] - Add validation to login form.
+* [X] - Create login form.
+* [X] - Add validation to login form.
 * [ ] - Make POST request to @/api/login
   * [ ] - If errors show errors to user.
   * [ ] - Else save token navigate dashboard page.
