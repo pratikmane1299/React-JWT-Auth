@@ -30,7 +30,7 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Install Dependencies.
   * [X] - react-router-dom, bootstrap, yup.
 * [X] - Add login/signUp, protected Routes.
-* [ ] - Create signup form.
+* [X] - Create signup form.
 * [ ] - Add validation to signup form.
 * [ ] - Make POST request to @/api/signup
   * [ ] - If errors show errors on page.
