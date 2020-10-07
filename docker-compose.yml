@@ -1,0 +1,46 @@
+version: '3'
+
+services:
+  db:
+    image: mongo:latest
+    container_name: react-jwt-auth-db
+    restart: always
+    ports: 
+      - ${MONGO_PORT}:${MONGO_PORT}
+    volumes:
+      - mongodb:/data/db
+  
+  backend:
+    image: react-jwt-auth-backend-img
+    container_name: react-jwt-auth-backend
+    build: ./server
+    restart: on-failure
+    depends_on:
+      - db
+    ports:
+      - ${REACT_APP_API_PORT}:${REACT_APP_API_PORT}
+    environment:
+      REACT_APP_API_PORT: ${REACT_APP_API_PORT}
+      DB_NAME: ${DB_NAME}
+      JWT_SECRET: ${JWT_SECRET}
+    volumes:
+      - ./server:/app/server
+  
+  frontend:
+    image: react-jwt-auth-frontent-img
+    container_name: react-jwt-auth-frontend
+    build: ./client
+    restart: on-failure
+    depends_on:
+      - backend
+    stdin_open: true
+    ports:
+      - 3000:3000
+    environment:
+      REACT_APP_API_PORT: ${REACT_APP_API_PORT}
+      CHOKIDAR_USEPOLLING: ${CHOKIDAR_USEPOLLING}
+    volumes:
+      - ./client:/app/client
+
+volumes:
+  mongodb:

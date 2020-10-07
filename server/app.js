@@ -11,13 +11,13 @@ const dashboardRouter = require('./routes/dashboard');
 const isLoggedIn = require('./middlewares/auth');
 
 const app = express();
-const PORT = process.env.PORT || 1234;
+const PORT = process.env.REACT_APP_API_PORT || 1234;
 
 app.use(morgan('dev'));
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(`mongodb://localhost:${process.env.MONGO_PORT}/${process.env.DB_NAME}`, { 
+mongoose.connect(`mongodb://db:${process.env.MONGO_PORT}/${process.env.DB_NAME}`, { 
   useNewUrlParser: true,
   useUnifiedTopology: true 
 })
