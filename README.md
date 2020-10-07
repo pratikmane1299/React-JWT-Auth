@@ -2,6 +2,30 @@
 
 Authentication and Authorization in jsonwebtokens.
 
+## Requirements
+  - [**Docker**](https://www.docker.com/get-started)
+
+## Getting Started
+
+### 1. Clone the repo
+```sh
+  git clone https://github.com/pratikmane1299/React-JWT-Auth.git
+```
+
+### 2. Install Dependencies
+```sh
+  $ cd client
+  npm install
+
+  cd server
+  npm install
+```
+
+### 3. Running the application with docker
+```sh
+  docker-compose up
+```
+
 ## Server
 
 * [X] - Initialize Node Project.
