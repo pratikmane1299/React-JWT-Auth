@@ -72,3 +72,7 @@ Authentication and Authorization in jsonwebtokens.
 * [X] - Get token from context and show user details in dashboard.
 * [X] - Add logout.
   * [X] - Remove token from localstorage.
+
+# License
+
+The project is licensed under the MIT license. Read [license](./LICENSE) for more information.
