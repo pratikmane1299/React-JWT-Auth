@@ -3,6 +3,7 @@ const yup = require('yup');
 const { sign } = require('jsonwebtoken');
 const Redis = require('ioredis');
 const crypto = require('crypto');
+const bcryptjs = require('bcryptjs');
 
 const User = require('../models/user');
 const sendMail = require('../utils/sendMail');
@@ -55,6 +56,21 @@ const loginSchema = yup.object().shape({
     .string()
     .trim()
     .required('Password is required')
+});
+
+const resetPasswordSchema = yup.object().shape({
+  newPassword: yup
+    .string()
+    .trim()
+    .required('New Password is required'),
+  confirmNewPassword: yup
+    .string()
+    .trim()
+    .required('Confirm New Password is required')
+    .oneOf([
+      yup.ref('newPassword'), null
+      ], `Passwords don't match`
+    )
 });
 
 router.post('/signup', async (req, res, next) => {
@@ -142,6 +158,38 @@ router.post('/forgot-password', async (req, res, next) => {
     next(error);
   }
   
+});
+
+router.post('/reset-password/:token', async (req, res, next) => {
+  const body = await req.body;
+
+  const { token:resetPasswordToken } = req.params;
+
+  const key = FORGOT_PASSWORD_TOKEN + resetPasswordToken;
+
+  try {
+
+    const userId = await redis.get(FORGOT_PASSWORD_TOKEN + resetPasswordToken);
+
+    if (!userId) return res.status(403).json({message: 'Token expired.'})
+
+    const hashedPassword = await bcryptjs.hash(body.newPassword, 12);
+
+    await resetPasswordSchema.validate(body, { abortEarly: false });
+
+    await User.findByIdAndUpdate(userId, {
+      password: hashedPassword
+    });
+
+    await redis.del(key);
+
+    res.status(200).json({
+      message:'Password reset successfully'
+    });
+
+  } catch(error) {
+    next(error);
+  }
 });
 
 module.exports = router;

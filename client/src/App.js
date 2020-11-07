@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Signup from './views/Signup';
 import Login from './views/Login';
 import ForgotPassword from './views/ForgotPassword';
+import ResetPassword from './views/ResetPassword';
 import Dashboard from './views/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -24,6 +25,7 @@ function App() {
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
             <Route path="/forgot-password" component={ForgotPassword} />
+            <Route path="/reset-password/:token" component={ResetPassword} />
             <PrivateRoute exact path="/" component={Dashboard} />
           </Switch>
         </main>
