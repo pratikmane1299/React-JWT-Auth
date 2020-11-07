@@ -7,6 +7,7 @@ import AuthContext from './contexts/auth';
 import Header from './components/Header';
 import Signup from './views/Signup';
 import Login from './views/Login';
+import ForgotPassword from './views/ForgotPassword';
 import Dashboard from './views/Dashboard';
 import PrivateRoute from './components/PrivateRoute';
 
@@ -22,6 +23,7 @@ function App() {
           <Switch>
             <Route path="/signup" component={Signup} />
             <Route path="/login" component={Login} />
+            <Route path="/forgot-password" component={ForgotPassword} />
             <PrivateRoute exact path="/" component={Dashboard} />
           </Switch>
         </main>

@@ -10,6 +10,12 @@ services:
     volumes:
       - mongodb:/data/db
   
+  redis:
+    image: redis:alpine
+    restart: always
+    ports: 
+    - 6379:6379
+  
   backend:
     image: react-jwt-auth-backend-img
     container_name: react-jwt-auth-backend
@@ -17,6 +23,7 @@ services:
     restart: on-failure
     depends_on:
       - db
+      - redis
     ports:
       - ${REACT_APP_API_PORT}:${REACT_APP_API_PORT}
     environment:

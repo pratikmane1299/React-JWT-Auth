@@ -1,8 +1,17 @@
 const router = require('express').Router();
 const yup = require('yup');
 const { sign } = require('jsonwebtoken');
+const Redis = require('ioredis');
+const crypto = require('crypto');
 
 const User = require('../models/user');
+const sendMail = require('../utils/sendMail');
+
+const redis = new Redis({
+  host: 'redis'
+});
+
+const FORGOT_PASSWORD_TOKEN = 'FORGOT_PASSWORD_TOKEN';
 
 const signUpSchema = yup.object().shape({
   firstName: yup
@@ -93,6 +102,46 @@ router.post('/login', async (req, res, next) => {
   } catch(error) {
     next(error);
   }
+});
+
+router.post('/forgot-password', async (req, res, next) => {
+  const { email } = req.body;
+
+  if (!email) {
+    return res.status(400).json({message: 'Email is required'});
+  }
+
+  try {
+    const user = await User.findOne({ email: email });
+
+    if (!user) {
+      return res.status(404).json({message: 'Email not found'});
+    }
+
+    const token = crypto.randomBytes(30).toString('hex')
+
+    await redis.set(
+      FORGOT_PASSWORD_TOKEN+token,
+      user._id,
+      'ex', 1000 * 60 * 60 * 24 * 1
+    );
+
+    sendMail(
+      email,
+      'RESET PASSWORD',
+      `You are receiving this because you have requested the reset of the password for your account.\n
+      Please click on the following link, or paste this into your browser to reset your password.\n
+      If you did not request this, please ignore this email.\n
+      <a href='http://localhost:3000/reset-password/${token}'>Reset Password</a>`
+    );
+
+    res.status(200).json({
+      message: `Email sent to ${email}`
+    });
+  } catch(error) {
+    next(error);
+  }
+  
 });
 
 module.exports = router;

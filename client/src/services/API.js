@@ -17,3 +17,7 @@ export function fetchLoggedInUserProfile(token) {
     }
   });
 }
+
+export function forgotPassword(email) {
+  return axios.post(`${API_URL}/auth/forgot-password`, {email});
+}
