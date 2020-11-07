@@ -110,6 +110,7 @@ export default class Login extends React.Component {
                 <div className="col">
                   <div className="form-group">
                     <label htmlFor="password">Password</label>
+                    <Link to="/forgot-password" className="float-right text-dark">Forgot Password ?</Link>
                     <input
                       name="password"
                       type="password"
